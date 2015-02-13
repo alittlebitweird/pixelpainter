@@ -30,6 +30,7 @@ body {
 
 #gui-container {
   width: 33%;
+  height: 800px;
   float: right;
   background: #252525;
   color: #fff;
@@ -84,4 +85,14 @@ body {
 
   #swatch6 {
     background-color: purple;
+  }
+
+  #save-container {
+  }
+
+  #save {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    border-bottom: solid 2px;
   }

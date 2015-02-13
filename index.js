@@ -38,6 +38,18 @@ var buildGui = function() {
     var swatchString = "<div class='swatch' id='swatch" + s + "'></div>";
     $('#swatch-container').append(swatchString);
   }
+
+// Build save function
+  $('#gui-container').append("<div id='save-container'></div>");
+  $('#save-container').append("<a href='#' id='save'>Save Image</a>");
+  $('#save').click(function() {
+    var save = [];
+    for (var p = 1; p < 10;) {
+     var color = $("#pixel-" + p).css("background");  
+     save.push(color);
+    }
+    console.log(save);
+  });
 };
 
 // Paint
