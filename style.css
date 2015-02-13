@@ -1,0 +1,15 @@
+.grid-container {
+  border: solid 1px #d0d0d0;
+  margin: auto;
+  padding: 0;
+}
+.pixel {
+  height: 15px;
+  width: 15px;
+  border-right: solid 1px #d0d0d0;
+  display: inline-block;
+}
+
+.pixel:hover {
+  background: #d0d0d0;
+}
