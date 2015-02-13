@@ -1,5 +1,6 @@
-.grid-container {
-  border: solid 1px #d0d0d0;
+#grid-container {
+  border-top: solid 1px #d0d0d0;
+  border-left: solid 1px #d0d0d0;
   margin: auto;
   padding: 0;
 }
@@ -7,6 +8,7 @@
 .row {
   height: 15px;
   border-bottom: solid 1px #d0d0d0;
+  display: block;
 }
 
 .pixel {
@@ -14,6 +16,7 @@
   width: 15px;
   border-right: solid 1px #d0d0d0;
   display: inline-block;
+  margin-bottom: -3px;
 }
 
 .pixel:hover {
