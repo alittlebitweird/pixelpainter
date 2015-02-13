@@ -1,24 +1,87 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
 #grid-container {
   border-top: solid 1px #d0d0d0;
   border-left: solid 1px #d0d0d0;
-  margin: auto;
-  padding: 0;
+  float: left;
 }
 
-.row {
-  height: 15px;
-  border-bottom: solid 1px #d0d0d0;
-  display: block;
+  .row {
+    height: 15px;
+    border-bottom: solid 1px #d0d0d0;
+    display: block;
+  }
+
+  .pixel {
+    height: 15px;
+    width: 15px;
+    border-right: solid 1px #d0d0d0;
+    display: inline-block;
+    margin-bottom: -3px;
+  }
+
+  .pixel:hover {
+    background: #d0d0d0;
+    cursor: pointer;
+  }
+
+#gui-container {
+  width: 33%;
+  float: right;
+  background: #252525;
+  color: #fff;
+  text-align: center;
 }
 
-.pixel {
-  height: 15px;
-  width: 15px;
-  border-right: solid 1px #d0d0d0;
-  display: inline-block;
-  margin-bottom: -3px;
-}
+  #swatch-container {
+    height: 26px;
+    border-top: solid 1px #d0d0d0;
+    border-left: solid 1px #d0d0d0;
+    display: inline-block;
+    float: right;
+    margin: 0 10% 0 0;
+  }
 
-.pixel:hover {
-  background: #d0d0d0;
-}
+  #swatch-label {
+    margin: 27px 0;
+  }
+
+  .swatch {
+    height: 25px;
+    width: 25px;
+    background: #fff;
+    border-bottom: solid 1px #d0d0d0;
+    border-right: solid 1px #d0d0d0;
+    display: inline-block;
+  }
+  .swatch:hover {
+    background: #d0d0d0;
+    cursor: pointer;
+  }
+
+  #swatch1 {
+    background-color: red;
+  }
+
+  #swatch2 {
+    background-color: orange;
+  }
+
+  #swatch3 {
+    background-color: yellow;
+  }
+
+  #swatch4 {
+    background-color: green;
+  }
+
+  #swatch5 {
+    background-color: blue;
+  }
+
+  #swatch6 {
+    background-color: purple;
+  }
