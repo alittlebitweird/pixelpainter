@@ -3,6 +3,12 @@
   margin: auto;
   padding: 0;
 }
+
+.row {
+  height: 15px;
+  border-bottom: solid 1px #d0d0d0;
+}
+
 .pixel {
   height: 15px;
   width: 15px;
