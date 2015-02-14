@@ -80,7 +80,7 @@ body {
   }
 
   #swatch-container {
-    height: 36px;
+    height: 44px;
     border-top: solid 1px #d0d0d0;
     border-left: solid 1px #d0d0d0;
     display: inline-block;
@@ -92,8 +92,8 @@ body {
   }
 
   .swatch {
-    height: 35px;
-    width: 35px;
+    height: 43px;
+    width: 43px;
     background: #fff;
     border-bottom: solid 1px #d0d0d0;
     border-right: solid 1px #d0d0d0;
@@ -106,7 +106,7 @@ body {
   }
 
   .swatch p {
-    margin: 6px 0 0 0;
+    margin: 10px 0 0 0;
     font-size: 18px;
     font-weight: bold;
     text-shadow: #000 1px 1px 0px;
