@@ -37,6 +37,23 @@ body {
   text-align: center;
 }
 
+  #grid-options-container {
+    float: right;
+    margin: 0 10% 0 0;
+  }
+  
+  input {
+    border: #d0d0d0; 
+    padding: 10px;
+    font-size: 20px;
+    width: 137px;
+    margin-bottom: 8px;
+  }
+
+  .grid-options-label {
+    margin-top: 35px;
+  }
+
   #swatch-container {
     height: 26px;
     border-top: solid 1px #d0d0d0;
