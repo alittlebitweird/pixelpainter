@@ -1,3 +1,7 @@
+// IDEA
+// animation tool. function that saves img to array, slices/copies array to a z-index 1 higher, allows you to set refresh speed
+// see previous frame silhoutte
+//
 // Vars
 var gridSize = 50;
 var pixelSize = 15;
@@ -51,6 +55,7 @@ var buildGui = function() {
   for (var s = 1; s < 7; s++) {
     var swatchString = "<div class='swatch' id='swatch" + s + "'></div>";
     $('#swatch-container').append(swatchString);
+    $('#swatch' + s).append("<p>" + s + "</p>");
   }
 
   // Save color to swatch on right click, use color in swatch on click 

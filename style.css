@@ -37,6 +37,7 @@ body {
   position: fixed;
   right: 0;
   width: 22%;
+  min-width: 246px;
   height: 100%;
   background: #252525;
   color: #fff;
@@ -98,9 +99,15 @@ body {
     border-right: solid 1px #d0d0d0;
     display: inline-block;
   }
+
   .swatch:hover {
     background: #d0d0d0;
     cursor: pointer;
+  }
+
+  .swatch p {
+    margin: 7px 0 0 0;
+    font-weight: bold;
   }
 
   #swatch1 {
