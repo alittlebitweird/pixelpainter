@@ -106,8 +106,10 @@ body {
   }
 
   .swatch p {
-    margin: 7px 0 0 0;
+    margin: 6px 0 0 0;
+    font-size: 18px;
     font-weight: bold;
+    text-shadow: #000 1px 1px 0px;
   }
 
   #swatch1 {
