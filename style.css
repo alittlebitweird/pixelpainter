@@ -1,15 +1,20 @@
 body {
+  height: 100%;
   font-family: sans-serif;
   margin: 0;
 }
 
 #grid-container {
-  border-top: solid 1px #d0d0d0;
-  border-left: solid 1px #d0d0d0;
-  float: left;
+  width: 78%
 }
+  
+  #grid {
+    border-top: solid 1px #d0d0d0;
+    border-left: solid 1px #d0d0d0;
+    margin: auto;
+  }
 
-  .row {
+  .grid-row {
     height: 15px;
     border-bottom: solid 1px #d0d0d0;
     display: block;
@@ -20,7 +25,7 @@ body {
     width: 15px;
     border-right: solid 1px #d0d0d0;
     display: inline-block;
-    margin-bottom: -3px;
+    box-sizing: initial;
   }
 
   .pixel:hover {
@@ -29,19 +34,38 @@ body {
   }
 
 #gui-container {
-  width: 33%;
-  height: 800px;
-  float: right;
+  position: fixed;
+  right: 0;
+  width: 22%;
+  height: 100%;
   background: #252525;
   color: #fff;
   text-align: center;
 }
 
+#gui-container h1 {
+  text-align: center;
+}
+
   #grid-options-container {
-    float: right;
-    margin: 0 10% 0 0;
+    text-align: center;
   }
-  
+
+  .grid-options {
+  }
+
+  #pixel-size {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+  }
+ 
+  #grid-size {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+  } 
+
   input {
     border: #d0d0d0; 
     padding: 10px;
@@ -55,12 +79,11 @@ body {
   }
 
   #swatch-container {
-    height: 26px;
+    height: 36px;
     border-top: solid 1px #d0d0d0;
     border-left: solid 1px #d0d0d0;
     display: inline-block;
-    float: right;
-    margin: 0 10% 0 0;
+    margin: auto;
   }
 
   #swatch-label {
@@ -68,8 +91,8 @@ body {
   }
 
   .swatch {
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
     background: #fff;
     border-bottom: solid 1px #d0d0d0;
     border-right: solid 1px #d0d0d0;

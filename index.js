@@ -1,42 +1,33 @@
 // Vars
-var gridSize = 30;
-var pixelSize = 25;
+var gridSize = 50;
+var pixelSize = 15;
 // Build Grid
 var buildGrid = function(gridSize) { 
   // Build container
   for (var row = 0; row < gridSize; row++) {
     
     // Make unique id for each row and render
-    var rowString = "<div class='row' id='row-" + (row) + "'></div>";
-    $('#grid-container').append(rowString);
+    var rowString = "<div class='grid-row' id='grid-row-" + (row) + "'></div>";
+    $('#grid').append(rowString);
     
     // Make unique id for each pixel and render
     for (var i = 1; i < (gridSize + 1); i++) {
       var pixelString = "<div class='pixel' id='pixel-" + (row * gridSize + i) + "'></div>";
-      $('#row-' + row).append(pixelString);
+      $('#grid-row-' + row).append(pixelString);
     }
   }       
 
   // Set pixel height/width
   $('.pixel').css("height", pixelSize).css("width", pixelSize);
   // Set row height
-  $('.row').css("height", pixelSize);
+  $('.grid-row').css("height", pixelSize + 1);
   // Set container width to width of all pixels
-  $('#grid-container').css("width", gridSize * (pixelSize+1)).css("height", gridSize * (pixelSize+1));
+  $('#grid').css("width", (gridSize * (pixelSize+1)) + 1).css("height", gridSize * (pixelSize+1));
 };  
 
 // Build GUI
 var buildGui = function() {
-// Build heading 
-  $('#grid-container').after("<div id='gui-container'><h1>Pixel Paint</h1></div>");
-
 // Build Grid Options
-  $('#gui-container').append("<div id='grid-options-container'></div>");
-  $('#gui-container').append("<h3 class='grid-options-label'>Grid Size</h3>");
-  $('#grid-options-container').append("<form><input type='text', placeholder='30', name='grid-size'/>");
-
-  $('#gui-container').append("<h3 class='grid-options-label'>Pixel Size</h3>");
-  $('#grid-options-container').append("<input type='text', placeholder='25', name='pixel-size'/>");
 
   // Change grid size
   $('input[name=grid-size]').keypress(function(e) {
@@ -59,24 +50,33 @@ var buildGui = function() {
   });
 
   // Build color swatch
-  $('#gui-container').append("<div id='swatch-container'></div>");
-  $('#gui-container').append("<h3 id='swatch-label'>Choose Color</h3>");
   for (var s = 1; s < 7; s++) {
     var swatchString = "<div class='swatch' id='swatch" + s + "'></div>";
     $('#swatch-container').append(swatchString);
   }
 
-  // Change selected color when clicking swatch 
-  $(".swatch").click(function selectColor() {
-    selectedColor = $(this).css("background");
+
+  $(".swatch").on("contextmenu", function(){
+    return false;
+  });
+
+
+
+  // Change primary/secondary color when clicking swatch 
+  $(".swatch").mousedown(function(e) {
+    if (e.which === 1) {
+      primaryColor = $(this).css("background");
+      console.log("1");
+    } else if (e.which === 3) {
+      secondaryColor = $(this).css("background");
+      console.log("3");
+    }
   });
 
 
   // Set photo as background
 
   // Build save function
-  $('#gui-container').append("<div id='save-container'></div>");
-  $('#save-container').append("<a href='#' id='save'>Save Image</a>");
   $('#save').click(function() {
     var save = [];
     for (var p = 1; p < (gridSize * gridSize); p++) {
@@ -90,13 +90,28 @@ var buildGui = function() {
 };
 
 // Paint
-var selectedColor = "red";
+var primaryColor = "red";
+var secondaryColor = "blue";
 var mouseDown = false;
 var initPaint = function() {
   
-  // Change background of pixel on click
-  $(".pixel").mousedown(function pencil() {
-    $(this).css("background", selectedColor);  
+  // Change background of pixel to primary color on click
+  
+  // Change background of pixel to secondary color on right click
+  $(".pixel").mousedown(function(e) {
+    if (e.which === 1) {
+      e.preventDefault();
+      $(this).css("background", primaryColor);
+    } else if (e.which === 3) { 
+      e.preventDefault();
+      $(this).css("background", secondaryColor);  
+      }
+    return false;
+  });
+
+  // Prevent right click from opening menu
+  $(".pixel").on("contextmenu", function(){
+    return false;
   });
 
   // Change background of hovered pixels on click + drag 
@@ -108,18 +123,28 @@ var initPaint = function() {
     mouseDown = false;
   });
 
-  $(".pixel").mouseover(function paint() {
+  $(".pixel").mouseover(function paint(e) {
     if (mouseDown) {
-      $(this).css("background", selectedColor);
+      if (e.which === 1) {
+        $(this).css("background", primaryColor);
+      } else if (e.which === 3) {    
+        $(this).css("background", secondaryColor);
+      }
+     
+    // Prevent right click on pixel from opening contextmenu
+      $(".pixel").on("contextmenu", function(){
+        return false;
+      });
     }
   });
-  
 };
+
+// Build History State Functionality
 
 // Initialize App
 $( document ).ready(function() {
-  $('body').append("<div id='grid-container'></div>");
   buildGrid(gridSize);
   buildGui();
   initPaint();
+  initHistory();
 });
