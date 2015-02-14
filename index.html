@@ -3,6 +3,7 @@
   <head>
     <title>Pixel Paint</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/colorpicker.js"></script>
     <script type="text/javascript" src ="index.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,24 +23,41 @@
       </div>
         <!-- Swatches   -->
       <div class="form-group col-xs-12">
-        <label for="color">Choose Color</label>
+        <label for="color">Saved Colors</label>
         <br />
         <div id="swatch-container">
         </div>
-
+      </div>
+        <label for="pixelSize">Choose Color</label>
+      <div class="form-group col-xs-12" id="color-picker">
+        <div id="picker-wrapper">
+          <div id="picker"></div>
+          <div id="picker-indicator"></div>
+          </div>
+          <div id="slider-wrapper">
+            <div id="slider"></div>
+            <div id="slider-indicator"></div>
+        </div>
+      </div>
+      <div class="form-group grid-options col-xs-12">
+        <label for="gridSize">Set Background Image</label>
+        <input type="text" class="form-control" id="background-image" name="background-image" placeholder="Paste link to image and press enter">
+      </div>
+      <div class="form-group grid-options col-xs-12">
+        <label for="gridSize">Image Opacity</label>
+        <input type="range" min="0" max="100" value="100" class="slider" id="image-opacity" name="image-opacity">
       </div>
 
 
-      <div class="form-group">
-        <a href="#" id="save">
-          Save Image
-        </a>
+      <div class="form-group col-xs-12">
+        <a href="#" id="save">Save Image</a>
       </div>
     </div>
     <div id="grid-container">
       <div id="grid">
       </div>
     </div>
+
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

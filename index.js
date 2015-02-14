@@ -25,9 +25,7 @@ var buildGrid = function(gridSize) {
   $('#grid').css("width", (gridSize * (pixelSize+1)) + 1).css("height", gridSize * (pixelSize+1));
 };  
 
-// Build GUI
 var buildGui = function() {
-// Build Grid Options
 
   // Change grid size
   $('input[name=grid-size]').keypress(function(e) {
@@ -55,57 +53,108 @@ var buildGui = function() {
     $('#swatch-container').append(swatchString);
   }
 
+  // Save color to swatch on right click, use color in swatch on click 
+  $(".swatch").mousedown(function(e) {
+    if (e.which === 1) {
+      primaryColor = $(this).css("background");
+    } else if (e.which === 3) {
+      $(this).css("background", primaryColor);
+    }
+  });
 
   $(".swatch").on("contextmenu", function(){
     return false;
   });
 
+  // Build color picker
+  ColorPicker.fixIndicators(
+    document.getElementById('slider-indicator'),
+    document.getElementById('picker-indicator'));
 
+  ColorPicker(
+    document.getElementById('slider'), 
+    document.getElementById('picker'), 
 
-  // Change primary/secondary color when clicking swatch 
-  $(".swatch").mousedown(function(e) {
-    if (e.which === 1) {
-      primaryColor = $(this).css("background");
-      console.log("1");
-    } else if (e.which === 3) {
-      secondaryColor = $(this).css("background");
-      console.log("3");
-    }
-  });
+    function(hex, hsv, rgb, pickerCoordinate, sliderCoordinate) {
 
+      ColorPicker.positionIndicators(
+        document.getElementById('slider-indicator'),
+        document.getElementById('picker-indicator'),
+        sliderCoordinate, pickerCoordinate
+      );  
+
+      // Set primary color to selected color
+      $("#picker").click(function(e) {
+          primaryColor = hex;
+          //document.body.style.backgroundColor = hex;
+      });
+    }); 
+      // hide cursor when selecting color
+      $("#picker").mousedown(function() {
+        $("#picker").css("cursor", "none");
+      });
+      $("#picker").mouseup(function() {
+        $("#picker").css("cursor", "default");
+      });
+
+  };
 
   // Set photo as background
+  $('input[name=background-image]').keypress(function(e) {
+    if(e.which == 13) {
+      console.log(imageBackground);
+      e.preventDefault();
+      var imageBackground = $('input[name=background-image]').val();
+      $('#grid-container').css("background", "url('" + imageBackground + "')");
+    }
+  });
+
+// Build File
+var buildFile = function() {
+  // New file object
+  var file = {
+    createdAt: Date.now,
+    image: []
+  };
+
 
   // Build save function
-  $('#save').click(function() {
-    var save = [];
+  var save = function(){
     for (var p = 1; p < (gridSize * gridSize); p++) {
      var color = $("#pixel-" + p).css("background");  
-     save.push(color);
+     file.image.push(color);
     }
-    console.log(save);
-    JSON.stringify(save);
-    console.log(JSON.stringify(save));
-  });
+    console.log(file.image);
+    JSON.stringify(file.image);
+    console.log(JSON.stringify(file.image));
+  };
+
+  $('#save').click(save());
+
+  var updateImage = function(selectedPixel) {
+    selectedPixel.replace('pixel-','');
+    file.image[selectedPixel] = $(this).css("background", primaryColor);
+  };
 };
 
 // Paint
-var primaryColor = "red";
+var primaryColor = "black";
 var secondaryColor = "blue";
 var mouseDown = false;
 var initPaint = function() {
   
-  // Change background of pixel to primary color on click
   
-  // Change background of pixel to secondary color on right click
+  // Paint background of pixel to primary color on click / erase on right click
   $(".pixel").mousedown(function(e) {
     if (e.which === 1) {
       e.preventDefault();
       $(this).css("background", primaryColor);
+      var selectedPixel = $(this).attr("id");
+      //updateImage(selectedPixel);
     } else if (e.which === 3) { 
       e.preventDefault();
-      $(this).css("background", secondaryColor);  
-      }
+      $(this).css("background", "transparent");  
+    } 
     return false;
   });
 
@@ -128,7 +177,7 @@ var initPaint = function() {
       if (e.which === 1) {
         $(this).css("background", primaryColor);
       } else if (e.which === 3) {    
-        $(this).css("background", secondaryColor);
+        $(this).css("background", "transparent");
       }
      
     // Prevent right click on pixel from opening contextmenu
@@ -145,6 +194,7 @@ var initPaint = function() {
 $( document ).ready(function() {
   buildGrid(gridSize);
   buildGui();
+  buildFile();
   initPaint();
   initHistory();
 });
