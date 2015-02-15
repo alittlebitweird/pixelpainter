@@ -5,10 +5,12 @@ body {
 }
 
 #grid-container {
-  width: 78%
+  width: 78%;
 }
   
   #grid {
+    background-size: cover !important;
+    background-repeat: no-repeat;
     border-top: solid 1px #d0d0d0;
     border-left: solid 1px #d0d0d0;
     margin: auto;

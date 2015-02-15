@@ -102,25 +102,31 @@ var buildGui = function() {
         $("#picker").css("cursor", "default");
       });
 
-  };
-
   // Set photo as background
   $('input[name=background-image]').keypress(function(e) {
     if(e.which == 13) {
       console.log(imageBackground);
       e.preventDefault();
       var imageBackground = $('input[name=background-image]').val();
-      $('#grid-container').css("background", "url('" + imageBackground + "')");
+      $('#grid').css("background", "url('" + imageBackground + "')");
     }
   });
+  // Adjust grid opacity according to slider
+  $('input[name=grid-opacity]').click(function() {
+    var gridOpacity = $('input[name=grid-opacity]').val();
+    $('.pixel, .grid-row').css("opacity", (gridOpacity/100));
+  });
+};
 
 // Build File
 var buildFile = function() {
   // New file object
   var file = {
     createdAt: Date.now,
-    image: []
+    image: new Array(gridSize * gridSize)
   };
+
+  console.log(file.image.length);
 
 
   // Build save function
