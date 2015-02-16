@@ -2,6 +2,16 @@
 // animation tool. function that saves img to array, slices/copies array to a z-index 1 higher, allows you to set refresh speed
 // see previous frame silhoutte
 //
+
+// Choose Word
+var words = ['lemon', 'bat', 'rubber duck', 'zebra', 'octopus', 'skyscraper', 'violin', 'carrot', 'gnome', 'goblin'];
+
+var chooseWord = function(){
+  var number = Math.floor((Math.random() * words.length) + 1); 
+  var word = words[number].toLowerCase();
+  $('.instructions').html("Draw a " + word);
+};
+
 // Vars
 var gridSize = 50;
 var pixelSize = 15;
@@ -18,6 +28,9 @@ var buildGrid = function(gridSize) {
     for (var i = 1; i < (gridSize + 1); i++) {
       var pixelString = "<div class='pixel' id='pixel-" + (row * gridSize + i) + "'></div>";
       $('#grid-row-' + row).append(pixelString);
+      var pixelFadeIn = "top " + (i / 5) + "s linear 0";
+      $("#pixel-" + (row * gridSize + i)).css("-webkit-transition", pixelFadeIn);
+
     }
   }       
 
@@ -203,6 +216,7 @@ var initPaint = function() {
 
 // Initialize App
 $( document ).ready(function() {
+  chooseWord();
   buildGrid(gridSize);
   buildGui();
   buildFile();

@@ -2,6 +2,16 @@ body {
   height: 100%;
   font-family: sans-serif;
   margin: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.instructions {
+  font-weight: 700;
 }
 
 #grid-container {
