@@ -33,7 +33,7 @@ body {
   .grid-row {
     height: 15px;
     border-bottom: solid 1px #d0d0d0;
-    display: block;
+    display: table;
   }
 
   .pixel {
