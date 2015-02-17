@@ -13,8 +13,8 @@ var chooseWord = function(){
 };
 
 // Vars
-var gridSize = 50;
-var pixelSize = 15;
+var gridSize = 75;
+var pixelSize = 10;
 // Build Grid
 var buildGrid = function(gridSize) { 
   // Build container
