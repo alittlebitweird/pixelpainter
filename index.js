@@ -19,23 +19,20 @@ var pixelSize = 10;
 var buildGrid = function(gridSize) { 
   // Build container
   for (var row = 0; row < gridSize; row++) {
-    
     // Make unique id for each row and render
     var rowString = "<div class='grid-row' id='grid-row-" + (row) + "'></div>";
     $('#grid').append(rowString);
-    
     // Make unique id for each pixel and render
-    for (var i = 1; i < (gridSize + 1); i++) {
+    for (var i = 1; i < gridSize + 1; i++) {
       var pixelString = "<div class='pixel' id='pixel-" + (row * gridSize + i) + "'></div>";
       $('#grid-row-' + row).append(pixelString);
       var pixelFadeIn = "top " + (i / 5) + "s linear 0";
       $("#pixel-" + (row * gridSize + i)).css("-webkit-transition", pixelFadeIn);
-
     }
-  }       
+  }
 
   // Set pixel height/width
-  $('.pixel').css("height", pixelSize).css("width", pixelSize);
+  $('.pixel').css({height: pixelSize, width: pixelSize});
   // Set row height
   $('.grid-row').css("height", pixelSize + 1);
   // Set container width to width of all pixels
@@ -49,7 +46,8 @@ var buildGui = function() {
     if(e.which == 13) {
       e.preventDefault();
       gridSize = $('input[name=grid-size]').val();
-      $('#grid-container').empty();
+	  gridSize = parseInt(gridSize);
+      $('#grid').empty();
       buildGrid(gridSize);
     }
   });
@@ -59,7 +57,7 @@ var buildGui = function() {
     if(e.which == 13) {
       e.preventDefault();
       pixelSize = $('input[name=pixel-size]').val();
-      $('#grid-container').empty();
+      $('#grid').empty();
       buildGrid(gridSize);
     }
   });
@@ -221,5 +219,5 @@ $( document ).ready(function() {
   buildGui();
   buildFile();
   initPaint();
-  initHistory();
+  //initHistory();
 });
