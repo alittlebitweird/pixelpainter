@@ -40,7 +40,7 @@ body {
     height: 15px;
     width: 15px;
     border-right: solid 1px #d0d0d0;
-    display: inline-block;
+    display: table-cell;
     box-sizing: initial;
   }
 
