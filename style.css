@@ -12,6 +12,10 @@ body {
 
 .instructions {
   font-weight: 700;
+  width: 75%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
 }
 
 #grid-container {
@@ -23,7 +27,7 @@ body {
     background-repeat: no-repeat;
     border-top: solid 1px #d0d0d0;
     border-left: solid 1px #d0d0d0;
-    margin: auto;
+    margin: 0 auto 5% auto;
   }
 
   .grid-row {
@@ -49,7 +53,7 @@ body {
   position: fixed;
   right: 0;
   width: 22%;
-  min-width: 290px;
+  min-width: 280px;
   height: 100%;
   background: #252525;
   color: #fff;
@@ -92,7 +96,7 @@ body {
   }
 
   #swatch-container {
-    height: 44px;
+    height: 38px;
     border-top: solid 1px #d0d0d0;
     border-left: solid 1px #d0d0d0;
     display: inline-block;
@@ -104,8 +108,8 @@ body {
   }
 
   .swatch {
-    height: 43px;
-    width: 43px;
+    height: 38px;
+    width: 38px;
     background: #fff;
     border-bottom: solid 1px #d0d0d0;
     border-right: solid 1px #d0d0d0;

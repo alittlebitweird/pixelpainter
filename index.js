@@ -4,7 +4,7 @@
 //
 
 // Choose Word
-var words = ['lemon', 'bat', 'rubber duck', 'zebra', 'octopus', 'skyscraper', 'violin', 'carrot', 'gnome', 'goblin'];
+var words = ['lemon', 'bat', 'rubber duck', 'zebra', 'octopus', 'skyscraper', 'violin', 'carrot', 'gnome', 'goblin', 'avocado', 'pencil', 'tree'];
 
 var chooseWord = function(){
   var number = Math.floor((Math.random() * words.length) + 1); 
@@ -14,7 +14,7 @@ var chooseWord = function(){
 
 // Vars
 var gridSize = 50;
-var pixelSize = 15;
+var pixelSize = 10;
 // Build Grid
 var buildGrid = function(gridSize) { 
   // Build container
