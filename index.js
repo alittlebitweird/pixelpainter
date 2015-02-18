@@ -9,7 +9,7 @@ var words = ['lemon', 'bat', 'rubber duck', 'zebra', 'octopus', 'skyscraper', 'v
 var chooseWord = function(){
   var number = Math.floor((Math.random() * words.length) + 1); 
   var word = words[number].toLowerCase();
-  $('.instructions').html("Draw a " + word);
+  $('.instructions').html("Paint a " + word);
 };
 
 // Vars
